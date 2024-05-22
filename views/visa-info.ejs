@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>7ajati</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+        <link rel="stylesheet" href="./style.css">
+        <style>
+              @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+
+
+
+        </style>
+    </head>
+    <body>
+    <section id="header">
+    <a href="/"><img src="./images/logo.png" alt="" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a class="active" href="/">Home</a></li>
+
+        <li class="dropdown"><a href="/shop" class="dropbtn">Shop</a>
+          <ul class="dropdown-content">
+            <li><a href="/Appliances">Appliances</a></li>
+            <li><a href="/Books">Books</a></li>
+            <li><a href="/Trips">Trips</a></li>
+            <li><a href="/Electronics">Electronics</a></li>
+            <li><a href="/Clothes">Clothes</a></li>
+            <li><a href="/beauty">beauty</a></li>
+            <li><a href="/Pets">Pets</a></li>
+            <li><a href="/Gaming">Gaming</a></li>
+            <li><a href="/PartyandEvents">Party and Events</a></li>
+            <li><a href="/ToolsAndGarden">Tools and Garden</a></li>
+            <li><a href="/HealthandWellbeing">Health and Wellbeing</a></li>
+        </li>
+      </ul>
+
+      <li><a href="/about">About us</a></li>
+      <li><a href="/contact-us">Contact us</a></li>
+      <li id="show-login" class="<%= loggedIn ? 'hidden' : '' %>">Log in</li>
+      <li id="listIt" class="<%= loggedIn ? '' : 'hidden' %>" onclick="window.location.href='/listIt'">Start listing</li>
+      <li id="logout" class="<%= loggedIn ? '' : 'hidden' %>" onclick="window.location.href='/logout'">Log out</li>
+      <li><a href="/cart"> <i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+
+  </section>
+      <div class="popup">
+        <div class="close-btn"><a href="/cart">&times;</a></div>
+        <div class="form">
+          <h2>Log in</h2>
+          <form method="POST" action="/login">
+            <div class="form-element">
+              <lable for="email">Email</lable>
+              <input type="text" id="email" placeholder="Enter email" name="email" required>
+            </div>
+            <div class="form-element">
+              <lable for="password">password</lable>
+              <input type="password" id="password" name="password" placeholder="Enter password" required>
+    
+            </div>
+            <div class="form-element">
+              <input type="checkbox" id="remember-me">
+              <lable for="remember-me">remember me</lable>
+            </div>
+            <div class="form-element">
+              <button>sign in</button>
+              <h1 id="show-signup">Create account</h1>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="popup-signup">
+        <div class="close-btn"><a href="/">&times;</a></div>
+        <div class="form">
+          <h2>Sign up</h2>
+          <form method="" action="">
+            <div class="form-element">
+              <lable for="fullname">Full Name</lable>
+              <input type="text" name="username" id="fullname" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-element">
+              <lable for="email">Email</lable>
+    
+              <input type="text" id="email" name="email" placeholder="Enter your email" required pattern="[^@\s]+@[^@\s]+" title="Invalid email address">
+            </div>
+            <div class="form-element">
+              <lable> password
+                <input type="password" id="mypassword" name="mypassword" placeholder="Type your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain
+                    at least one number and one uppercase and lowercase letter, and at least 8 or more character" onchange="onChange()">
+              </lable>
+            </div>
+    
+            <div class="form-element">
+              <lable>Retype password
+                <input type="password" id="rpassword" name="rpassword" placeholder="Retype your password" required onchange="onChange()">
+              </lable>
+              <br>
+            </div>
+            <div class="form-element">
+              <button>Create Account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+        <div class="main">
+  
+            <div class="container">
+              
+            <div class="heading">
+              
+              <h1>Payment details</h1>
+            
+              </div>
+              <form action="#">
+              <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Name" required/>
+              <br>
+              <label for="card">Card number</label>
+                <input type="text" minlength="16" maxlength="16" id="card" name="card" placeholder="0000 0000 0000 0000" required />
+              <br>
+              <div class="exp-cvc">
+                <div class="expiration">
+              <label for="expiry">Expiration date</label>
+                <input class="inputCard" name="expiry" id="expiry" type="text" required placeholder="00/00" required />
+                <br>
+                </div>
+                <div class="security">
+              <label for="cvc">CVC</label>
+                <input type="text" minlength="3" maxlength="4" id="cvc" name="cvc" placeholder="XXX" required />
+              <br>
+                </div>
+              </div>
+           
+              
+          <div class="backgo">
+              <button><a href="/checkout">Back</a></button>
+              <a href="/checkout4"><button type="submit" >Continue</button></a>
+          </div>
+              </form>
+            </div>
+            </div>
+            </div> 
+
+            <footer class="section-p1">
+              <div class="col">
+                <img class="logo" src="images/logo2.png">
+                <h4>Contact</h4>
+                <p><strong>Address:</strong>Online shop</p>
+                <p><strong>Phone:</strong>0780782608</p>
+                <p><strong>Hours:</strong>8AM-12AM</p>
+              </div>
+          
+              </div>
+               
+              <div class="col">
+                <h4>About 7ajati</h4>
+                <a href="/about">About us</a>
+                <a href="/contact-us">Contact us</a>
+                <a href="/howItWorks">How it Works</a>     <!--maya-->
+              </div>
+          
+              <div class="col"> <!--maya-->
+                <h4>Legal</h4>
+                <a href="/termsOfUse">Terms of Use</a>
+                <a href="/policy">Privacy Policy</a>
+                   
+              </div>
+          
+          
+              </div>
+              <div class="col">
+                <h4>My Account</h4>
+                <a href="./signin.ejs">Log in</a>
+                <a href="./signup.ejs">Sign up</a>
+                <a href="/cart">View cart</a>
+              </div>
+              </div>
+          
+              <div class="follow" class="col">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                  <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-instagram"></i>
+                </div>
+              </div>
+          
+              <div class="copyright">
+                <p>© 2023, 7ajati </p>
+              </div>
+          
+            </footer>
+        
+            <script src="script.js">
+              document.addEventListener('DOMContentLoaded', function() {
+                // Retrieve the total cost and number of days from local storage
+                const totalCost = localStorage.getItem('totalCost');
+                const days = localStorage.getItem('days');
+        
+                // Update the cost and days elements in the cart page
+                document.getElementById('cost').innerText = `${totalCost} JD`;
+                document.getElementById('days').innerText = `${days} Days`;
+              });
+            
+            </script>
+    </body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7ajati</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+  <section id="header">
+    <a href="/"><img src="./images/logo.png" alt="" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="/">Home</a></li>
+
+        <li class="dropdown"><a href="/shop" class="dropbtn">Shop</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Trips</a></li>
+            <li><a href="#">Electronics</a></li>
+
+        </li>
+      </ul>
+
+      <li><a href="/about">About us</a></li>
+      <li><a href="/contact-us">Contact us</a></li>
+      <li id="show-login" class="<%= loggedIn ? 'hidden' : '' %>">Log in</li>
+      <li id="logout" class="<%= loggedIn ? '' : 'hidden' %>" onclick="window.location.href='/logout'">Log out</li>
+      <li><a href="/cart" class="active"> <i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+
+  </section>
+  <div class="popup">
+    <div class="close-btn"><a href="/cart">&times;</a></div>
+    <div class="form">
+      <h2>Log in</h2>
+      <form method="POST" action="/login">
+        <div class="form-element">
+          <lable for="email">Email</lable>
+          <input type="text" id="email" placeholder="Enter email" name="email" required>
+        </div>
+        <div class="form-element">
+          <lable for="password">password</lable>
+          <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        </div>
+        <div class="form-element">
+          <input type="checkbox" id="remember-me">
+          <lable for="remember-me">remember me</lable>
+        </div>
+        <div class="form-element">
+          <button>sign in</button>
+          <h1 id="show-signup">Create account</h1>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="popup-signup">
+    <div class="close-btn"><a href="/">&times;</a></div>
+    <div class="form">
+      <h2>Sign up</h2>
+      <form method="POST" action="/sign-up">
+        <div class="form-element">
+          <lable for="fullname">Full Name</lable>
+          <input type="text" name="username" id="fullname" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-element">
+          <lable for="email">Email</lable>
+
+          <input type="text" id="email" name="email" placeholder="Enter your email" required pattern="[^@\s]+@[^@\s]+" title="Invalid email address">
+        </div>
+        <div class="form-element">
+          <lable> password
+            <input type="password" id="mypassword" name="mypassword" placeholder="Type your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain
+                at least one number and one uppercase and lowercase letter, and at least 8 or more character" onchange="onChange()">
+          </lable>
+        </div>
+
+        <div class="form-element">
+          <lable>Retype password
+            <input type="password" id="rpassword" name="rpassword" placeholder="Retype your password" required onchange="onChange()">
+          </lable>
+          <br>
+        </div>
+        <div class="form-element">
+          <button>Create Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+       <section class ="checkout">
+    
+      <form method="POST" action="/checkout">
+      <details open>
+      <summary class="active_summary"><h3>Delivery Address</h3></summary>
+      <p>Enter the address to send the items to.</p>
+      
+      <div>
+      <input id="first_name" type="text" name="first_name" placeholder="First Name"  maxlength="100" size="50" autofocus required>
+      <input class="left-space" id="last_name" type="text" name="last_name" placeholder="Last Name"  maxlength="100" size="50" required>
+     </div>
+      <div>
+     <select id="city" name="city" class="select" required>
+      <option hidden>Select City</option>
+      <option value="amman">Amman</option>
+      <option value="zarqa"> Zarqa</option>
+      <option value="irbid">Irbid</option>
+      <option value="ramtha">Ramtha</option>
+      <option value="aqaba">Aqaba</option>
+      <option value="mafraq">Mafraq</option>
+      <option value="madaba">Madaba</option>
+      <option value="salt">Salt</option>
+      <option value="jerash"> Jerash</option>
+      <option value="maan"> Ma'an</option>
+      <option value="karak"> Karak</option>
+      <option value="tafilah">Tafilah</option>
+      <option value="Ajloun">Ajloun</option>
+   
+     </select>
+     <input class="left-space" id="zip_code" type="text" name="zip_code" placeholder="Zip Code (optional)" maxlength="100" >
+    </div>
+     <input class="top-space" id="line_address1" type="text" name="line_address1" placeholder="Address Line 1"  maxlength="400" size="110" required>
+     <br>
+     <input class="top-space" id="line_address2" type="text" name="line_address2" placeholder="Address Line 2"  maxlength="400" size="110">
+     <br>
+     <div>
+     <span class="country-calling-code">+962</span>
+     <input class="top-space telephone" type="tel" pattern="7\d{8}" name="Phone_number" placeholder="Telephone" required>
+     
+     <input class="left-space" id="email" type="email" name="email" placeholder="Email" maxlength="200" size="66" required>
+    </div>
+    <input class="top-space" id="address_label" type="text" name="address_label" placeholder="Address Lable (optional)"  maxlength="400" size="110">
+     <br>
+    </details>
+    
+    <div class="checkout2">
+      <details>
+  <summary><h3>Delivery Methods</h3></summary>
+  <p>Select a courier service to deliver your items.</p>
+ 
+    <div class="back">
+      <label>
+          <input class="radiospace" type="radio" name="delivery_method"  value="normal" required >
+          <div>
+              <h6>Normal Delivery (1.50JD)</h6>
+              <p id="p1"> Within 48-72 hours</p>
+          </div>
+          <img src="./images/delivery.png" alt="normal-delivary">
+      </label>
+        </div>
+        <div class="back">
+      <label>
+          <input class="radiospace" type="radio" name="delivery_method"  value="fast"  >
+          <div>
+              <h6>Fast Delivery (2.50JD)</h6>
+              <p id="p2"> Delivery in the same day for orders placed before 7 pm or Within 24 hours Max</p>
+          </div>
+          <img src="./images/delivery.png" alt="normal-delivary">
+      </label>
+    </div>
+  </details>
+  
+  <div class="checkout3">
+    <details>
+    <summary><h3>Payment Method</h3></summary>
+    <p>Select how you wish to pay for this order.</p>
+    
+    
+        <div class="back">
+
+            <label><a href="/visa-info">
+                <input class="radiospace" type="radio" name="payment_method" value="online" required>
+                <div>
+                    <h6>Online Payment</h6>
+                    <p id="p1">Pay online using your credit or debit card.</p>
+                </div>
+                </a>
+                <img src="./images/visa.png" alt="visa">
+            </label>
+        </div>
+        
+        <div class="back">
+            <label>
+                <input class="radiospace" type="radio" name="payment_method" value="cash">
+                <div>
+                    <h6>Cash on Delivery</h6>
+                    <p id="p2">Pay in cash when order is delivered.</p>
+                </div>
+                <img src="./images/wallet.png"  alt="wallet">
+            </label>
+        </div>
+      </details>
+     <div class="backgo">
+     
+      <button><a href="/cart">Back</a></button>
+      <a href="/checkout4"><button type="submit" >submit</button></a>
+      
+     </div>
+     </form>
+     
+     </section>
+      
+    </section>
+    <footer class="section-p1">
+      <div class="col">
+        <img class="logo" src="images/logo2.png">
+        <h4>Contact</h4>
+        <p><strong>Address:</strong>Online shop</p>
+        <p><strong>Phone:</strong>0780782608</p>
+        <p><strong>Hours:</strong>8AM-12AM</p>
+      </div>
+  
+      </div>
+       
+      <div class="col">
+        <h4>About 7ajati</h4>
+        <a href="/about">About us</a>
+        <a href="/contact-us">Contact us</a>
+        <a href="/howItWorks">How it Works</a>     <!--maya-->
+      </div>
+  
+      <div class="col"> <!--maya-->
+        <h4>Legal</h4>
+        <a href="/termsOfUse">Terms of Use</a>
+        <a href="/policy">Privacy Policy</a>
+           
+      </div>
+  
+  
+      </div>
+      <div class="col">
+        <h4>My Account</h4>
+        <a href="./signin.ejs">Log in</a>
+        <a href="./signup.ejs">Sign up</a>
+        <a href="/cart">View cart</a>
+      </div>
+      </div>
+  
+      <div class="follow" class="col">
+        <h4>Follow Us</h4>
+        <div class="icon">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+  
+      <div class="copyright">
+        <p>© 2023, 7ajati </p>
+      </div>
+  
+    </footer>
+    <script src="script.js">
+      document.addEventListener('DOMContentLoaded', function() {
+        // Retrieve the total cost and number of days from local storage
+        const totalCost = localStorage.getItem('totalCost');
+        const days = localStorage.getItem('days');
+
+        // Update the cost and days elements in the cart page
+        document.getElementById('cost').innerText = `${totalCost} JD`;
+        document.getElementById('days').innerText = `${days} Days`;
+      });
+    </script>
+
+</body>
+
+</html>

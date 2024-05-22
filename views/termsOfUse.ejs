@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<!-- maya -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7ajati</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+  <section id="header">
+    <a href="/"><img src="./images/logo.png" alt="" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a class="active" href="/">Home</a></li>
+
+        <li class="dropdown"><a href="/shop" class="dropbtn">Shop</a>
+          <ul class="dropdown-content">
+            <li><a href="/Appliances">Appliances</a></li>
+            <li><a href="/Books">Books</a></li>
+            <li><a href="/Trips">Trips</a></li>
+            <li><a href="/Electronics">Electronics</a></li>
+            <li><a href="/Clothes">Clothes</a></li>
+            <li><a href="/beauty">beauty</a></li>
+            <li><a href="/Pets">Pets</a></li>
+            <li><a href="/Gaming">Gaming</a></li>
+            <li><a href="/PartyandEvents">Party and Events</a></li>
+            <li><a href="/ToolsAndGarden">Tools and Garden</a></li>
+            <li><a href="/HealthandWellbeing">Health and Wellbeing</a></li>
+        </li>
+      </ul>
+
+      <li><a href="/about">About us</a></li>
+      <li><a href="/contact-us">Contact us</a></li>
+      <li id="show-login" class="<%= loggedIn ? 'hidden' : '' %>">Log in</li>
+      <li id="listIt" class="<%= loggedIn ? '' : 'hidden' %>" onclick="window.location.href='/listIt'">Start listing</li>
+      <li id="logout" class="<%= loggedIn ? '' : 'hidden' %>" onclick="window.location.href='/logout'">Log out</li>
+      <li><a href="/cart"> <i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+
+  </section>
+    <div class="popup">
+        <div class="close-btn"><a href="/about">&times;</a></div>
+        <div class="form">
+            <h2>Log in</h2>
+            <form method="POST" action="/login">
+                <div class="form-element">
+                    <lable for="email">Email</lable>
+                    <input type="text" id="email" placeholder="Enter email" name="email" required>
+                </div>
+                <div class="form-element">
+                    <lable for="password">password</lable>
+                        <input type="password" id="password" name="password"placeholder="Enter password" required>
+                       
+                </div>
+                <div class="form-element">
+                    <input type="checkbox" id="remember-me">
+                    <lable for="remember-me">remember me</lable>
+                </div>
+                <div class="form-element">
+                    <button>sign in</button>
+                    <h1 id="show-signup">Create account</h1>
+                </div>
+            </form>
+        </div>
+    </div>
+  <div class="popup-signup">
+    <div class="close-btn"><a href="/about">&times;</a></div>
+    <div class="form">
+      <h2>Sign up</h2>
+      <form method="POST" action="/sign-up">
+        <div class="form-element">
+          <lable for="fullname">Full Name</lable>
+          <input type="text" name="username" id="fullname" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-element">
+          <lable for="email">Email</lable>
+          <input type="text" id="email" name="email" placeholder="Enter your email" required pattern="[^@\s]+@[^@\s]+" title="Invalid email address">
+        </div>
+        <div class="form-element">
+            <lable> password
+              <input type="password" id="mypassword" name="mypassword" placeholder="Type your password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain
+                at least one number and one uppercase and lowercase letter, and at least 8 or more character"  onchange="onChange()" >
+            </lable>        
+          </div>
+         
+          <div class="form-element">
+          <lable>Retype password
+            <input type="password" id="rpassword" name="rpassword" placeholder="Retype your password" required  onchange="onChange()">
+          </lable>
+          <br>
+        </div>
+                <div class="form-element">
+                    <button>Create Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+   <!-- <section class="opacity-low">
+    <section id="about"> -->
+<main class="termsMain">
+    <header class="terms-header">
+        <h1>Terms of Use</h1>
+    </header>
+    <section class="terms-introduction">
+        <h2>Introduction</h2>
+        <p>Welcome to our rental marketplace. By accessing and using our platform, you agree to comply with the following terms and conditions. Please read them carefully.</p>
+    </section>
+    <section class="terms-content">
+        <article class="term-item">
+            <h3>1. Acceptance of Terms</h3>
+            <p>By using our services, you agree to be bound by these terms. This section outlines the basic agreement between the user and the platform.</p>
+            <ol>
+                <li>Definition of acceptance: Using our services indicates that you accept and agree to these terms.</li>
+                <li>Scope of terms: These terms apply to all users of our platform, including visitors, registered users, and anyone who accesses or uses our services.</li>
+                <li>Amendments and updates: We reserve the right to modify these terms at any time. Changes will be posted on this page, and your continued use of the platform constitutes acceptance of the new terms.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>2. Privacy Policy</h3>
+            <p>Your privacy is important to us. Please review our Privacy Policy for details on how we collect and use your information.</p>
+            <ol>
+                <li>Information collection: We collect personal information such as name, item and contact details, and payment information when you register and use our services.</li>
+                <li>Use of information: We use the information to provide, maintain, and improve our services, process transactions, and communicate with you.</li>
+                <li>Data security measures: We implement security measures to protect your personal information from unauthorized access and disclosure.</li>
+            </ol>
+        </article>
+
+        <article class="term-item">
+            <h3>3. User Responsibilities</h3>
+            <p>As a user, you are responsible for your conduct on our platform.</p>
+            <ol>
+                <li>Compliance with laws: You must comply with all applicable laws and regulations when using our services.</li>
+                <li>Prohibited activities: You are prohibited from engaging in illegal activities, abusing our platform, theft, or violating the rights of others.</li>
+                <li>Account security: You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>4. Listing Items</h3>
+            <p>Users can list items for rent but must adhere to the following guidelines.</p>
+            <ol>
+                <li>Accurate descriptions: Provide truthful and accurate descriptions of the items you list, including their condition and any relevant details.</li>
+                <li>Compliance with laws: Ensure that the items you list are legal and that you have the right to rent them out.</li>
+                <li>Item availability: Ensure that the listed items are available for the entire rental period you have specified.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>5. Renting Items</h3>
+            <p>When renting items, users must follow these procedures.</p>
+            <ol>
+                <li>Rental requests: Submit rental requests through the platform.</li>
+                <li>Pick-up and return conditions: Follow the agreed-upon terms for picking up and returning the items, ensuring they are returned in the same condition.</li>
+                <li>Item inspections: Inspect items upon receipt and report any issues immediately to avoid disputes.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>6. Payments</h3>
+            <p>Payment terms for both renters and owners.</p>
+            <ol>
+                <li>Payment methods: We accept various payment methods, including credit/debit cards and electronic transfers.</li>
+                <li>Processing fees: Transaction fees may apply and will be disclosed at the time of payment.</li>
+               <!--check it back--> <li>Refund policies: Refunds are subject to our refund policy, which includes conditions for cancellations and returns.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>7. Insurance and Liability</h3>
+            <p>Details on insurance coverage and user liability.</p>
+            <ol>
+                <li>Insurance options: We offer optional insurance plans in the future to cover potential damages or losses.</li>
+                <li>User liability: Users are responsible for any damage or loss to the items during the rental period unless covered by insurance.</li>
+                <li>Claim procedures: In case of damage or loss, users must follow our claim procedures to seek reimbursement.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>8. Dispute Resolution</h3>
+            <p>Procedures for resolving disputes between users.</p>
+            <ol>
+                <li>Reporting issues: Report any issues or disputes to our support team promptly.</li>
+                <li>Dispute resolution process: We will investigate and mediate disputes to reach a fair resolution.</li>
+                <li>Mediation services: We may provide or recommend mediation services to help resolve disputes.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>9. Termination of Use</h3>
+            <p>Conditions under which a user's access to the platform may be terminated.</p>
+            <ol>
+                <li>Grounds for termination: We may terminate your access for violations of these terms or for engaging in prohibited activities.</li>
+                <li>Notice of termination: We will provide notice of termination and the reasons for it.</li>
+                <li>Consequences of termination: Termination may result in the loss of access to your account and any pending transactions.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>10. Intellectual Property</h3>
+            <p>Information on intellectual property rights.</p>
+            <ol>
+                <li>Platform content ownership: We own all rights to the content on our platform, including text, graphics, and logos.</li>
+                <li>User-generated content: Users retain ownership of content they create but grant us a license to use it.</li>
+                <li>Infringement claims: Report any intellectual property infringement claims to our support team.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>11. User Feedback</h3>
+            <p>Guidelines for providing feedback on the platform.</p>
+            <ol>
+                <li>Submitting feedback: Users can submit feedback and suggestions through our feedback channels.</li>
+                <li>Use of feedback: We may use your feedback to improve our services without any obligation to compensate you.</li>
+                <li>Confidentiality of feedback: Feedback may be treated as non-confidential unless otherwise agreed.</li>
+                <li>Submitting reviews: In the future, users will have the ability to review each other by submitting a number of stars from one to five.</li>
+            </ol>
+        </article>
+
+        <article class="term-item">
+            <h3>12. Identity Verification and Non-Criminal Record Submission</h3>
+            <p>Requirements for identity verification and non-criminal record submission.</p>
+            <ol>
+                <li>Identity verification: Users may be required to verify their identity using official documents such as a driver's license or passport or the National ID.</li>
+                <li>Non-criminal record: Users may be asked to submit proof of a clean criminal record to ensure the safety and trustworthiness of the platform.</li>
+                <li>Confidentiality: All submitted documents will be handled with strict confidentiality and used solely for verification purposes.</li>
+            </ol>
+        </article>      
+
+
+        <article class="term-item">
+            <h3>13. Changes to the Terms</h3>
+            <p>How changes to these terms will be communicated and enforced.</p>
+            <ol>
+                <li>Notification of changes: We will notify users of significant changes to these terms through email or platform notifications.</li>
+                <li>User acceptance of changes: Continued use of our platform after changes have been made constitutes acceptance of the new terms.</li>
+                <li>Effective date of changes: Changes will become effective as of the date specified in the notice.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>14. Governing Law</h3>
+            <p>The laws governing the use of the platform.</p>
+            <ol>
+                <li>Applicable laws: These terms are governed by the laws of the Jordanian Penal Code</li>
+                <li>Jurisdiction: Any disputes arising from these terms will be resolved in the Jordanian courts.</li>
+                <li>Legal proceedings: Users agree to submit to the jurisdiction of these courts for any legal proceedings.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>15. Disclaimer of Warranties</h3>
+            <p>Disclaimers regarding the warranties of the platform.</p>
+            <ol>
+                <li>General disclaimers: Our platform is provided "as is" without any warranties of any kind.</li>
+                <li>Limitation of warranties: We do not warrant that the platform will meet your requirements or that it will be uninterrupted or error-free.</li>
+                <li>User responsibilities: Users are responsible for their use of the platform and any consequences that arise from it.</li>
+            </ol>
+        </article>
+       
+        <article class="term-item">
+            <h3>16. Security Deposit</h3>
+            <p>Policies regarding security deposits required for rentals.</p>
+            <ol>
+                <li>Deposit requirements: A security deposit will be required by certain listers for certain items and will be specified at the time of listing.</li>
+                <li>Holding of deposits: Deposits are held securely and will be refunded upon the safe return of the item in its original condition.</li>
+                <li>Forfeiture conditions: Deposits may be forfeited in part or in full if the item is returned damaged or late, or if terms are otherwise violated.</li>
+            </ol>
+        </article>
+
+        <article class="term-item">
+            <h3>17. Indemnification</h3>
+            <p>Users' obligation to indemnify the platform.</p>
+            <ol>
+                <li>Indemnification conditions: Users agree to indemnify and hold us harmless from any claims arising from their use of the platform.</li>
+                <li>Scope of indemnity: This includes any damages, losses, or expenses incurred as a result of the user's actions.</li>
+                <li>Procedure for claims: Users must cooperate with us in the defense of any claims and provide all necessary information.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>18. Notices</h3>
+            <p>How notices will be sent and received.</p>
+            <ol>
+                <li>Methods of communication: Notices will be sent via email, in the future we will provide platform notifications section.</li>
+                <li>Receipt of notices: Notices are considered received when they are sent to the user's registered contact information.</li>
+                <li>Changes to contact information: Users are responsible for keeping their contact information up to date.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>19. Severability</h3>
+            <p>What happens if part of these terms is found to be unenforceable.</p>
+            <ol>
+                <li>Severability clause: If any provision of these terms is found to be unenforceable, the remaining provisions will remain in effect.</li>
+                <li>Effect on remaining terms: The unenforceable provision will be modified to the extent necessary to make it enforceable.</li>
+                <li>Amendments to unenforceable terms: We may amend the terms to replace any unenforceable provision with an enforceable one.</li>
+            </ol>
+        </article>
+        <article class="term-item">
+            <h3>20. Contact Information</h3>
+            <p>If you have any questions about these Terms, please contact us.</p>
+            <ol>
+                <li>Support email: You can reach us at 7ajati@outlook.com</li>
+                
+            </ol>
+        </article>
+    </section>
+</main>
+    <!-- </section>
+</section> -->
+ <footer class="section-p1">
+    <div class="col">
+      <img class="logo" src="images/logo2.png">
+      <h4>Contact</h4>
+      <p><strong>Address:</strong>Online shop</p>
+      <p><strong>Phone:</strong>0780782608</p>
+      <p><strong>Hours:</strong>8AM-12AM</p>
+    </div>
+
+    
+    <div class="col">
+      <h4>About 7ajati</h4>
+      <a href="/about">About us</a>
+      <a href="/contact-us">Contact us</a>
+      <a href="/howItWorks">How it Works</a>     <!--maya-->
+    </div>
+
+    <div class="col"> <!--maya-->
+      <h4>Legal</h4>
+      <a href="/termsOfUse">Terms of Use</a>
+      <a href="/policy">Privacy Policy</a>
+         
+    </div>
+
+    
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="./signin.ejs">Log in</a>
+      <a href="./signup.ejs">Sign up</a>
+      <a href="/cart">View cart</a>
+    </div>
+    
+
+    <div class="follow" class="col">
+      <h4>Follow Us</h4>
+      <div class="icon">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-instagram"></i>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© 2023, 7ajati </p>
+    </div>
+
+  </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
+
+
+

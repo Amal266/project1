@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+    <html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>7ajati</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+        <link rel="stylesheet" href="./style.css">
+    
+    </head>
+    
+    <body>
+    
+  <section id="header">
+    <a href="/"><img src="./images/logo.png" alt="" class="logo"></a>
+    <div>
+      <ul id="navbar">
+        <li><a class="active" href="/">Home</a></li>
+
+        <li class="dropdown"><a href="/shop" class="dropbtn">Shop</a>
+          <ul class="dropdown-content">
+            <li><a href="/Appliances">Appliances</a></li>
+            <li><a href="/Books">Books</a></li>
+            <li><a href="/Trips">Trips</a></li>
+            <li><a href="/Electronics">Electronics</a></li>
+            <li><a href="/Clothes">Clothes</a></li>
+            <li><a href="/beauty">beauty</a></li>
+            <li><a href="/Pets">Pets</a></li>
+            <li><a href="/Gaming">Gaming</a></li>
+            <li><a href="/PartyandEvents">Party and Events</a></li>
+            <li><a href="/ToolsAndGarden">Tools and Garden</a></li>
+            <li><a href="/HealthandWellbeing">Health and Wellbeing</a></li>
+        </li>
+      </ul>
+
+      <li><a href="/about">About us</a></li>
+      <li><a href="/contact-us">Contact us</a></li>
+      <li id="show-login" class="<%= loggedIn ? 'hidden' : '' %>">Log in</li>
+      <li id="listIt" class="<%= loggedIn ? '' : 'hidden' %>" onclick="window.location.href='/listIt'">Start listing</li>
+      <li id="logout" class="<%= loggedIn ? '' : 'hidden' %>" onclick="window.location.href='/logout'">Log out</li>
+      <li><a href="/cart"> <i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+
+  </section>
+        <div class="popup">
+            <div class="close-btn"><a href="/shop">&times;</a></div>
+            <div class="form">
+                <h2>Log in</h2>
+                <form method="POST" action="/login">
+                    <div class="form-element">
+                        <lable for="email">Email</lable>
+                        <input type="text" id="email" placeholder="Enter email" name="email" required>
+                    </div>
+                    <div class="form-element">
+                        <lable for="password">password</lable>
+                            <input type="password" id="password" name="password"placeholder="Enter password" required>
+                           
+                    </div>
+                    <div class="form-element">
+                        <input type="checkbox" id="remember-me">
+                        <lable for="remember-me">remember me</lable>
+                    </div>
+                    <div class="form-element">
+                        <button>sign in</button>
+                        <h1 id="show-signup">Create account</h1>
+                    </div>
+                </form>
+            </div>
+        </div>
+  <div class="popup-signup">
+    <div class="close-btn"><a href="/">&times;</a></div>
+    <div class="form">
+      <h2>Sign up</h2>
+      <form method="POST" action="/sign-up">
+        <div class="form-element">
+          <lable for="fullname">Full Name</lable>
+          <input type="text" name="username" id="fullname" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-element">
+          <lable for="email">Email</lable>
+
+          <input type="text" id="email" name="email" placeholder="Enter your email" required pattern="[^@\s]+@[^@\s]+" title="Invalid email address">
+        </div>
+        <div class="form-element">
+          <lable> password
+            <input type="password" id="mypassword" name="mypassword" placeholder="Type your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain
+                at least one number and one uppercase and lowercase letter, and at least 8 or more character" onchange="onChange()">
+          </lable>
+        </div>
+
+        <div class="form-element">
+          <lable>Retype password
+            <input type="password" id="rpassword" name="rpassword" placeholder="Retype your password" required onchange="onChange()">
+          </lable>
+          <br>
+        </div>
+        <div class="form-element">
+          <button>Create Account</button>
+          
+        <!-- maya -->
+        <div class="terms-checkbox-container">
+          <input type="checkbox" id="terms-agree" name="agree" required>
+          <label for="terms-agree">I agree to the <a href="/termsOfUse" target="_blank">Terms and Conditions</a></label>
+      </div>
+        <!--  -->
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+        
+    <!--header banner-->
+    <section id="page-header" class="opacity-low">
+        <h2>#Party and Events</h2>
+     
+    </section>
+
+    <section id="product1" class="section-p1">
+        <div class="pro-container">
+            <% for (let i = 0; i < 16 && i < products.length; i++)  { const product= products[i] %>
+                <div class="pro" onclick="window.location.href='/product/<%= product._id %>'">
+                  <img src=<%= product.thumbnail %> alt="">
+                  <div class="des">
+                    <h5><%= product.title %></h5>
+                    <div class="star">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <h4><%= product.price %> JOD</h4>
+                  </div>
+                  <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <% }; %>
+
+        </div>
+    </section>
+
+    <!--middle page banner-->
+    <section id="page-banner">
+        <h2>Borrow With a Content Heart</h2>
+        <p></p>
+    </section>
+
+
+    <section id="product1" class="section-p1">
+        <div class="pro-container">
+             
+            <% for (let i = 16; i < 32 && i < products.length; i++)  { const product= products[i] %>
+                <div class="pro" onclick="window.location.href='/product/<%= product._id %>'">
+                  <img src=<%= product.thumbnail %> alt="">
+                  <div class="des">
+                    <h5><%= product.title %></h5>
+                    <div class="star">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <h4><%= product.price %> JOD</h4>
+                  </div>
+                  <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
+                </div>
+                <% }; %>
+
+
+
+    </section>
+
+    <section id="pagination" class="section-p1">
+        <a href="/shop">1</a>
+        <a href="/shop2">2</a>
+        <a href="#"><i class="fal fa-long-arrow-alt-right"></i></a>
+    </section>
+    <footer class="section-p1">
+        <div class="col">
+          <img class="logo" src="images/logo2.png">
+          <h4>Contact</h4>
+          <p><strong>Address:</strong>Online shop</p>
+          <p><strong>Phone:</strong>0780782608</p>
+          <p><strong>Hours:</strong>8AM-12AM</p>
+        </div>
+    
+        </div>
+         
+        <div class="col">
+          <h4>About 7ajati</h4>
+          <a href="/about">About us</a>
+          <a href="/contact-us">Contact us</a>
+          <a href="/howItWorks">How it Works</a>     <!--maya-->
+        </div>
+    
+        <div class="col"> <!--maya-->
+          <h4>Legal</h4>
+          <a href="/termsOfUse">Terms of Use</a>
+          <a href="/policy">Privacy Policy</a>
+             
+        </div>
+    
+    
+        </div>
+        <div class="col">
+          <h4>My Account</h4>
+          <a href="./signin.ejs">Log in</a>
+          <a href="./signup.ejs">Sign up</a>
+          <a href="/cart">View cart</a>
+        </div>
+        </div>
+    
+        <div class="follow" class="col">
+          <h4>Follow Us</h4>
+          <div class="icon">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+    
+        <div class="copyright">
+          <p>© 2023, 7ajati </p>
+        </div>
+    
+      </footer>
+        <script src="../script.js"></script>
+    </body>
+    
+    </html>
+    
+    
+    
+    
