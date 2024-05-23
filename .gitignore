@@ -1,5 +1,5 @@
-./node_modules
+node_modules/*
 package-lock.json
 
-./views/img
-./views/images
+views/img/*
+views/images/*
